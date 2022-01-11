@@ -6,8 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -46,6 +44,7 @@ class LearningController extends AbstractController
         if (!empty($_POST['name'])) {
             $_SESSION['name'] = $_POST['name'];
         }
-        return $this->redirectToRoute(('homepage'));
+        return $this->render('homepage/index.html.twig', ['name' => $_SESSION['name']]);
+        // return $this->redirectToRoute('homepage');
     }
 }
