@@ -42,8 +42,6 @@ class LearningController extends AbstractController
         if (!empty($_POST['name'])) {
             $name = $_POST['name'];
             $this->session->set('name', $name);
-        } else {
-            $name = "unknown";
         }
         return $this->redirectToRoute('homepage');
     }
