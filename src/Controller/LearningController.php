@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class LearningController extends AbstractController
 {
@@ -52,7 +54,8 @@ class LearningController extends AbstractController
         // $name = "Unknown";
         if (!empty($this->session->get('name'))) {
             $name = $this->session->get('name');
-            return $this->render('aboutme/index.html.twig', ['name' => $name]);
+            $date = new DateTime();
+            return $this->render('aboutme/index.html.twig', ['name' => $name, 'date' => $date]);
         } else {
             return $this->forward('App\Controller\LearningController::ShowMyName');
         }

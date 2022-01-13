@@ -3,8 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,6 +12,51 @@
         {% endblock %}
     </head>
     <body>
+    <style>
+    .sideBar {
+        height: 100%;
+        width: 100px;
+        position: fixed;
+        margin-top: 15%;
+        margin-left:10px;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .menu{
+        display:flex;
+        flex-direction: column;
+        align-items: left;
+
+    }
+    .time{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+
+    }
+    footer{
+        position:fixed;
+        width:100%;
+        left:0;
+        bottom: 30px;
+        text-align: center;
+    }
+    </style>
+    <aside class="sideBar">
+    {% block menu %}
+        <div class="menu">
+        <a href= "{{path('homepage')}}">Homepage</a></br>
+        <a href= "{{path('aboutme')}}">About Me</a></br>
+        </div>
+    {% endblock %}
+    </aside>
+
         {% block body %}{% endblock %}
+    <footer>
+    {% block footer%}
+    <p>&copy; Becode</p>
+    {% endblock %}
+    </footer>
     </body>
 </html>
