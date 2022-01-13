@@ -35,6 +35,9 @@
         align-items: left;
 
     }
+    .quote {
+         margin: 2em 20%; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; 
+    }
     footer{
         position:fixed;
         width:100%;
@@ -55,7 +58,7 @@
         {% block body %}{% endblock %}
 
     
-        <p>{{quote()}}</p>
+        <div class="quote">{{quote()|nl2br}}</div>
 
 
     <footer>
